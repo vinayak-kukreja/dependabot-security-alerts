@@ -1,5 +1,5 @@
 const issueNumber = 4;
-const issueTitle = `[AUTOCUT] Dependabot Security Alert #${issueNumber}`;
+const issueTitle = '[HIGH] Some Security Issue';
 const issueURL = 'some-url';
 const issueBody = `Github reported a new dependabot security incident at: ${issueURL}`;
 const ownerName = 'cdk8s-mock-owner';
@@ -32,6 +32,10 @@ const mockListDependabotAlerts = jest.fn().mockResolvedValue({
     number: issueNumber,
     html_url: issueURL,
     state: 'open',
+    security_advisory: {
+      severity: 'high',
+      summary: 'Some Security Issue',
+    },
   }],
 });
 

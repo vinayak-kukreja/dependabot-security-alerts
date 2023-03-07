@@ -32,7 +32,10 @@ export async function run() {
   const openSecurityIncidents = dependabotSecurityIncidents.data.filter((incident) => incident.state === 'open');
 
   for (const incident of openSecurityIncidents) {
-    const issueTitle = `[AUTOCUT] Dependabot Security Alert #${incident.number}`;
+    const severity = incident.security_advisory.severity.toUpperCase();
+    const summary = incident.security_advisory.summary;
+
+    const issueTitle = `[${severity}] ${summary}`;
 
     const issueExists = existingDependabotSecurityIssues.find((issue) => issue.title === issueTitle);
 
